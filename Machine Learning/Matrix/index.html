@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--Author: James Ritchie
+Date 2024-->
+<title>Tester</title>
+<script src="matrix.js"></script>
+<script src="neuralNetwork.js"></script>
+<script>
+//This is an example of how to use the matrix library.
+/*    
+    let m1 = new Matrix(4,3);
+    let m2 = new Matrix(3,4);
+    m1.randomize();
+    m2.randomize();
+    
+    console.table(m1.matrix);
+    console.table(m2.matrix);
+    let m3 = m1.multiplyMatrix(m2);
+    console.table(m3.matrix);
+
+    m1.print();
+    let m3 = m1.transpose();
+    m3.print();
+    let m4 = m3;
+    m4.add(5);
+    m4.print();
+*/ 
+
+//Using the Neural Network class
+let nn = new NeuralNetwork(2,2,1);
+
+let input = [10,5]
+
+let output = nn.feedforward(input);
+
+console.log(output);
+
+
+</script>
