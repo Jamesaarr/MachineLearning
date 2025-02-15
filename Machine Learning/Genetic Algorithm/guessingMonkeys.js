@@ -81,8 +81,7 @@ class Zoo {
         let highestFitness = 0;
         while (!this.guessFound) {
             generation++;
-            if(generation === 20000){
-                console.log(`Guess not found in generation ${generation}`);
+            if(generation === 200000){
                 break;
             }
             this.reproduce();
@@ -91,11 +90,11 @@ class Zoo {
                     highestFitness = this.cages[i].fitness;
                 }
             }
-            console.log(`Highest Fitness: ${highestFitness}`);
 
+            document.getElementById("current_fitness").innerHTML = `Current Fitness: ${highestFitness}`;
             for (let i = 0; i < this.cages.length; i++) {
                 if (this.cages[i].guess === word) {
-                    console.log(`Guess found in generation ${generation}: '${this.cages[i].guess}'`);
+                    document.getElementById("guess_found").innerHTML = `Found in: ${generation}`;
                     this.guessFound = true;
                     break;
                 };
@@ -103,12 +102,16 @@ class Zoo {
         };
     };
 };
-let word = "gene pooling";
+let word = "unicorn";
 let wordLength = word.length;
-let numOfMonkeys = 1000;
-let mutationRate = 20;
-console.log(`The phrase is ${wordLength} letters long.`);
-console.log(`There are ${numOfMonkeys} entities in the pool.`);
-console.log(`The Mutation Rate is ${mutationRate}%.`);
+let numOfMonkeys = 10000;
+let mutationRate = 30;
+
 let whipsnade = new Zoo(numOfMonkeys,mutationRate);
-whipsnade.reproduceUntilGuessFound();
+document.getElementById("target").innerHTML = `The target is: ${word}`;
+document.getElementById("mute_rate").innerHTML = `The mutatation rate is: ${mutationRate}`;
+document.getElementById("monkey_sum").innerHTML = `There are ${numOfMonkeys} Monkeys`;
+
+function start(){
+    whipsnade.reproduceUntilGuessFound();
+};
